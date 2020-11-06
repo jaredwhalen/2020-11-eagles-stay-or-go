@@ -1,0 +1,103 @@
+<div id="main">
+  <div id="top" class="w-small">
+    <div alignment="true" class="headerIntroNoImage">
+      <div alignment="true" class="headerSectionNoImage">
+        <h1 alignment="true" class="overlayText">Eagles <span class="stay">Stay</span> or <span class="go">Go</span></h1>
+        <div alignment="true" class="headDisplay">
+
+          <div alignment="true" class="byline">
+            <a target="_blank" href="https://www.delawareonline.com/staff/2646929001/martin-frank/">Martin Frank</a>, Delaware News Journal
+          </div>
+          <div alignment="true" class="dateline"><span id="span-updated">Nov. 9, 2020</span></div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="text-col" data-text="0">
+
+      <p>The decisions are coming soon for the Eagles.</p>
+      <p>Eagles general manager Howie Roseman has already said the team needs to get younger. That means several free agents and high-priced veterans could be on their way out, and possibly some recent draft picks who haven&rsquo;t panned out.</p>
+      <p>Those moves should start in the next week or so, with free agency beginning next month.</p>
+      <p>Here is your chance to weigh in on who should return or not:</p>
+
+
+
+    </div>
+
+  </div>
+  <div id="g-main" class="w-large gap">
+
+    <div id="submit" class="sticky">
+      Submit your picks to see results <i class="fas fa-poll-h"></i>
+    </div>
+
+
+    {% for group, items in data | groupby("group") %}
+    <div class="g-row-label gap">{{ group }}</div>
+    <div class="g-group">
+      {% for item in items %}
+      <div alignment="true" class="g-card {{item.stayOrGo}}" id="player-{{item.number}}" data-name="{{item.Name}}">
+        <div class="top-section section">
+          <div alignment="true" class="photosection {{item.stayOrGo}}">
+            <!-- <div alignment="true" class="corner-mark"> <span alignment="true">#{{item.number}}</span> </div> -->
+            <img src="images/{{item.filename}}.png" alt="">
+          </div>
+          <div alignment="true" class="infosection">
+            {% if group == "managers"%}
+            <div class="name">{{item.first}} {{item.last}}</div>
+            <div class="detail">{{ item.position }}</div>
+            {% else %}
+            <div class="name">#{{item.number}} {{item.first}} {{item.last}}</div>
+            <div class="detail">Ht: {{item.ht}} / Wt: {{item.wt}} / Age: {{item.age}}</div>
+            {% endif %}
+            <div class="description">{{item.description}}</div>
+            <div class="ourCall ">
+              <span>Our call</span> <span class="{{item.stayOrGo}}">{{item.stayOrGo}}</span><br />
+              <span>Why?</span> {{item.why}}
+            </div>
+            <!-- <div class="reason"> -->
+            <!-- Why?: {{item.why}} -->
+            <!-- </div> -->
+          </div>
+        </div>
+        <div class="bottom-section section">
+
+
+
+          <div alignment="true" class="staygo" data-vote="empty" data-number="{{item.number}}" data-name="{{item.first}} {{item.last}}">
+            <div alignment="true" class="votebutton staybutton" data-vote="stay">STAY</div>
+            <div alignment="true" class="votebutton gobutton" data-vote="go">GO</div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% if group == "pitchers" %}
+    <div class="adblock">
+      <p style="margin-top:5px;"><a href="https://offers.delawareonline.com/specialoffer?gps-source=CPNEWS&amp;utm_medium=onsite&amp;utm_source=news&amp;utm_campaign=NEWSROOM&amp;utm_content=CPNEWS" target="_blank">
+        </a>If you think local
+        news is important to your community, <strong><a href="https://offers.delawareonline.com/specialoffer?gps-source=CPNEWS&amp;utm_medium=onsite&amp;utm_source=news&amp;utm_campaign=NEWSROOM&amp;utm_content=CPNEWS" target="_blank">consider taking
+            advantage of our current subscription offer;</a></strong> or <strong><a href="https://profile.delawareonline.com/newsletters/manage/" target="_blank">sign up for a newsletter</a></strong> to have our great content delivered directly to
+        your inbox.
+      </p>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+
+
+
+  </div>
+
+  <div class="text-col w-small gap" data-text="1">
+    <div class="credit">Player photos, copyright © 2020 The Eagles</div>
+    <hr />
+    To give feedback or to report an issue with this page, contact Jared Whalen at <a href="mailto:jwhalen@delawareonline.com?subject=Eagles%20Stay%20or%20Go">jwhalen@delawareonline.com</a>.
+  </div>
+
+
+
+</div>
